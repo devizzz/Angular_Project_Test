@@ -1,0 +1,26 @@
+<mat-list role="list">
+  <mat-list-item *ngIf="statusUser" role="listitem">
+    <mat-icon>home</mat-icon>
+    <a class="menuItem" routerLink="/" (click)="onMenuCloseDispatch()"
+      >Inicio</a
+    >
+  </mat-list-item>
+  <mat-list-item *ngIf="statusUser" role="listitem">
+    <mat-icon>logout</mat-icon>
+    <a class="menuItem" (click)="onLogOut()">
+      Salir
+    </a>
+  </mat-list-item>
+  <mat-list-item *ngIf="!statusUser" role="listitem">
+    <mat-icon>how_to_reg</mat-icon>
+    <a class="menuItem" routerLink="/registrar" (click)="onMenuCloseDispatch()"
+      >Registrar</a
+    >
+  </mat-list-item>
+  <mat-list-item *ngIf="!statusUser" role="listitem">
+    <mat-icon>login</mat-icon>
+    <a class="menuItem" routerLink="/login" (click)="onMenuCloseDispatch()"
+      >Login</a
+    >
+  </mat-list-item>
+</mat-list>

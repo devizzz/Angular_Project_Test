@@ -1,0 +1,54 @@
+<div fxLayout fxLayoutAlign="center center">
+  <mat-icon>filter_alt</mat-icon>
+  <mat-form-field fxFlex="50%">
+    <input matInput type="text" (keyup)="makeFilter($event.target)" placeholder="Filtro">
+  </mat-form-field>
+</div>
+
+<section fxLayout="column" fxLayoutAlign="center center">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="bookId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> BookId </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.bookId }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Título </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.title }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.description }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Precio </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.price }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="publishDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Fecha de publicación
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.publishDate }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Autor </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.author }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-header-row
+      *matRowDef="let row; columns: displayedColumns"
+    ></mat-header-row>
+  </table>
+
+  <mat-paginator (page)="eventPagination($event)" #pagination [pageSize]="booksPerPag" [pageSizeOptions]="pageSelect" [length]="totalBooks"></mat-paginator>
+
+</section>
+
+<button mat-fab id="button-add" color="warn" (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,16 @@
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(177, 177, 177);
+}
+
+.menuItem {
+  margin: 0px 10px;
+}
+
+.ulMenu {
+  list-style: none;
+}
